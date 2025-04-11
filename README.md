@@ -1,109 +1,122 @@
-# 🛒 Kaggle Online Retail Dataset Analysis
+# 🛍️ Online Retail Data Engineering Pipeline
 
-This project performs data ingestion, cleaning, and exploratory data analysis on the Kaggle Online Retail Dataset. It demonstrates a professional data engineering pipeline using Python and Pandas.
+This project implements a complete data engineering pipeline for the Online Retail Dataset from Kaggle. It includes data ingestion, transformation, and modeling steps to support comprehensive analysis of retail transactions.
 
 ---
 
-## 📐 Architecture Overview
+## 📦 Dataset Overview
+
+The dataset consists of nearly a year's worth of transactional data from a UK-based online retailer, containing:
+
+- Invoice numbers
+- Stock codes
+- Product descriptions
+- Quantities and prices
+- Invoice timestamps
+- Customer IDs
+- Country of purchase
+
+---
+
+## 🧰 Project Architecture
 
 ```plaintext
-             +-------------------+
-             |   Data Source     |
-             | Kaggle Retail CSV |
-             +-------------------+
-                      |
-                      v
-       +----------------------------+
-       |    Data Ingestion Layer    |
-       | (load from CSV with Pandas)|
-       +----------------------------+
-                      |
-                      v
-       +----------------------------+
-       |    Data Cleaning Layer     |
-       | - Remove nulls             |
-       | - Filter bad records       |
-       +----------------------------+
-                      |
-                      v
-       +----------------------------+
-       |      Feature Engineering   |
-       | - Total Price column       |
-       | - DateTime features        |
-       +----------------------------+
-                      |
-                      v
-       +----------------------------+
-       | Exploratory Data Analysis  |
-       | - Charts with Seaborn      |
-       | - Summary Stats            |
-       +----------------------------+
-
-kaggle-online-retail-dataset/
-│
-├── data/
-│   └── OnlineRetail.csv              # Original dataset (downloaded from Kaggle)
-│
-├── notebooks/
-│   └── online_retail_analysis.ipynb  # Main EDA notebook
-│
-├── src/
-│   ├── data_loader.py                # Data loading logic
-│   ├── data_cleaner.py               # Cleaning functions
-│   └── feature_engineer.py           # Feature engineering
-│
-├── tests/
-│   └── test_data_cleaner.py          # Unit tests
-│
-├── requirements.txt
-└── README.md
++-------------------+
+|   Data Source     |
+| Kaggle Retail CSV |
++-------------------+
+         |
+         v
++-----------------------+
+| Data Ingestion Layer  |
+| (Pandas CSV Loader)   |
++-----------------------+
+         |
+         v
++-----------------------+
+| Data Transformation   |
+| (Pandas DataFrames)   |
++-----------------------+
+         |
+         v
++-----------------------+
+| Data Modeling         |
+| (Star Schema Design)  |
++-----------------------+
+         |
+         v
++-----------------------+
+| Data Analysis         |
+| (Exploratory Insights)|
++-----------------------+
 ```
 
-## Setup Instructions
-### 1. Clone & Install Dependencies
-```
-git clone https://github.com/juniortej/kaggle-online-retail-dataset.git
-cd kaggle-online-retail-dataset
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.7+
+- Pandas
+- Jupyter Notebook (optional, for exploration)
+
+### Installation
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/juniortej/kaggle-online-retail-dataset-data-engineering.git
+cd kaggle-online-retail-dataset-data-engineering
 ```
 
-## Optional: Create virtual environment
-```
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-```
-## Install dependencies
+2. **Install dependencies:**
+```bash
 pip install -r requirements.txt
 ```
 
-## Features
-✅ Load raw transactional retail data
+3. **Download dataset:**
 
-🧹 Clean dataset: drop nulls, remove negative quantities/prices
+- Visit: [Kaggle Dataset](https://www.kaggle.com/datasets/carrie1/ecommerce-data)
+- Download `data.csv` and move it into the `/data` directory of this project
 
-💡 Add features like TotalPrice and InvoiceMonth
+---
 
-📊 Visualize total monthly sales and top-selling items
+## 🗂️ Project Structure
 
+```plaintext
+├── common_tools/        # Utility functions
+├── config/              # Configuration files
+├── data-modeling/       # Schema design and transformations
+├── etl/                 # ETL pipeline scripts
+├── ingestion/           # Data loading scripts
+├── workflow/            # Orchestration logic (if used)
+├── data/                # Raw dataset goes here
+├── requirements.txt     # Dependencies
+├── README.md            # You're reading this!😁
+```
 
-🧠 Data Fields
+---
 
-- InvoiceNo: Transaction ID
+## 📊 Analytical Goals
 
-- StockCode: Product ID
+- Track top-selling products
+- Identify purchase patterns by country
+- Understand customer purchasing frequency
+- Visualize revenue trends over time
 
-- Description: Product Name
+---
 
-- Quantity: Number of units sold
+## 📈 Future Enhancements
 
-- InvoiceDate: Date and time of transaction
+- Data validation checks
+- Data warehouse integration
+- Dashboard integration (Tableau, Power BI)
+- Scheduled pipelines using Airflow or Prefect (I did with prefect directly on it)
 
-- UnitPrice: Price per unit
+---
 
-- CustomerID: ID of the customer
+## 🤝 Contributions
 
-- Country: Customer location
+Contributions are welcome! Please open issues or submit a pull request for any feature enhancements or bug fixes.
 
-## 📜 License
-This project is licensed under the MIT License.
-
+---
